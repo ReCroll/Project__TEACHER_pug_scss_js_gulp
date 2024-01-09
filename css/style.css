@@ -1762,6 +1762,7 @@ footer > strong > h1 > a:hover {
 }
 
 .header__container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   min-height: 70px;
@@ -1968,16 +1969,6 @@ body._touch .menu__arrow {
   border-top: 10px solid #ffffff;
 }
 
-.menu__body._active::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 70px;
-  z-index: 2;
-}
-
 .menu__sub-list {
   position: absolute;
   top: 100%;
@@ -1986,14 +1977,15 @@ body._touch .menu__arrow {
 .menu__body._active {
   position: fixed;
   z-index: -2;
-  top: 0;
+  top: auto;
+  bottom: 0;
   left: 50%;
   translate: -50% 0%;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 70px);
   background-color: #5e5372;
   opacity: 0.9;
-  padding: 90px 30px 30px 15px;
+  padding: 30px 30px 30px 15px;
   transition: left 0.3s ease 0s;
   overflow: auto;
 }
@@ -2572,7 +2564,7 @@ body._touch .menu__arrow {
 .swiper .swiper-wrapper {
   display: flex;
   align-items: center;
-  height: 13.75rem;
+  height: calc(120px + 100 * (100vw - 320px) / 930);
 }
 
 .swiper .swiper-slide {
@@ -2754,6 +2746,7 @@ body._touch .menu__arrow {
   opacity: 0;
   visibility: hidden;
   transition: all 0.8s ease 0s;
+  overflow-y: auto;
 }
 
 #popup {
@@ -2772,6 +2765,7 @@ body._touch .menu__arrow {
 
 .popup__body {
   min-height: 100%;
+  min-width: 18.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2800,7 +2794,7 @@ body._touch .menu__arrow {
   position: relative;
   width: 100%;
   max-height: 55vh;
-  min-height: 18.75rem;
+  min-height: 19.75rem;
   overflow-y: auto;
 }
 
@@ -2905,7 +2899,6 @@ body._touch .menu__arrow {
 
 .lesson__content-video {
   width: 100%;
-  min-height: 240px;
 }
 
 .lesson__content-video h3,
@@ -3069,6 +3062,28 @@ body._touch .menu__arrow {
   .swiper__text h3 {
     font-size: 1.875rem;
   }
+
+  .swiper__text {
+    margin-top: 90px;
+    margin-bottom: 20px;
+  }
+
+  .swiper__text h3 {
+    font-size: 30px;
+  }
+
+  .swiper .swiper-wrapper {
+    height: 13.75rem;
+  }
+
+  .popup__title {
+    font-size: 1.875rem;
+    line-height: 100%;
+  }
+
+  .lesson__content-links {
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 119.99875em) {
@@ -3219,10 +3234,6 @@ body._touch .menu__arrow {
     position: relative;
   }
 
-  #popup .popup__body .popup__content .lessons__wrap-popup {
-    min-height: 25rem;
-  }
-
   .popup-2 {
     overflow: auto;
   }
@@ -3255,6 +3266,32 @@ body._touch .menu__arrow {
     padding: 0px 15px;
   }
 
+  .header__container::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    translate: -50% 0%;
+    height: 70px;
+    background-color: #5e5372;
+    opacity: 0.9;
+    transition: left 0.3s ease 0s;
+  }
+
+  .header__container._active::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    width: 100%;
+    height: 70px;
+    background-color: #5e5372;
+    opacity: 0.9;
+    transition: left 0.3s ease 0s;
+  }
+
   .sub__menu-toggle {
     display: block !important;
   }
@@ -3267,29 +3304,25 @@ body._touch .menu__arrow {
     display: block;
   }
 
-  .menu__body::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    height: 70px;
-    z-index: 2;
-  }
-
   .menu__body {
     position: fixed;
     z-index: -2;
-    top: 0;
-    left: -100%;
+    top: auto;
+    bottom: 0;
+    left: -50%;
     translate: -50% 0%;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 70px);
     background-color: #5e5372;
     opacity: 0.9;
-    padding: 90px 30px 30px 10px;
+    padding: 30px 30px 30px 10px;
     transition: left 0.3s ease 0s;
     overflow: auto;
+  }
+
+  .menu__body._active {
+    left: 50%;
+    translate: -50% 0%;
   }
 
   .menu__list {
@@ -3576,6 +3609,18 @@ body._touch .menu__arrow {
 
   .page {
     zoom: 0.8;
+  }
+}
+
+@media (orientation: landscape) {
+  .popup__body .popup__content {
+    width: 70%;
+  }
+}
+
+@media screen and (max-height: 768px) and (orientation: landscape) {
+  #popup-2 .popup__body {
+    padding: 20px 50px 200px 50px;
   }
 }
 
