@@ -1980,8 +1980,7 @@ body._touch .menu__arrow {
   z-index: -2;
   top: auto;
   bottom: 0;
-  left: 50%;
-  translate: -50% 0%;
+  left: 0%;
   width: 100%;
   height: calc(100% - 70px);
   background-color: #5e5372;
@@ -3318,8 +3317,7 @@ body._touch .menu__arrow {
     z-index: -2;
     top: auto;
     bottom: 0;
-    left: -50%;
-    translate: -50% 0%;
+    left: -100%;
     width: 100%;
     height: calc(100% - 70px);
     background-color: #5e5372;
@@ -3330,8 +3328,7 @@ body._touch .menu__arrow {
   }
 
   .menu__body._active {
-    left: 50%;
-    translate: -50% 0%;
+    left: 0%;
   }
 
   .menu__list {
